@@ -1,0 +1,21 @@
+{
+  "packageId": "com.deucarian.xr-ui.theming-integration",
+  "displayName": "Deucarian XR UI Theming Integration",
+  "ownedCapabilities": [],
+  "runtimeAssemblies": [
+    "Deucarian.XRUI.ThemingIntegration"
+  ],
+  "editorAssemblies": [],
+  "sampleAssemblies": [],
+  "testAssemblies": [
+    "Deucarian.XRUI.ThemingIntegration.Tests.EditMode"
+  ],
+  "requiredDependencies": [
+    "com.deucarian.theming",
+    "com.deucarian.xr-ui"
+  ],
+  "optionalVersionDefinedDependencies": [],
+  "allowedDirectDebugCalls": [],
+  "allowedDirectUnityObjectLifetimeCalls": [],
+  "expectedSamplesRoot": "Samples~"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Deucarian.XRUI.ThemingIntegration",
+  "rootNamespace": "Deucarian.XRUI.ThemingIntegration",
+  "references": [
+    "Deucarian.Theming",
+    "Deucarian.XRUI"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

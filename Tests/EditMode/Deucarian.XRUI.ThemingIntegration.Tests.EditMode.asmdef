@@ -1,0 +1,25 @@
+{
+  "name": "Deucarian.XRUI.ThemingIntegration.Tests.EditMode",
+  "rootNamespace": "Deucarian.XRUI.ThemingIntegration.Tests",
+  "references": [
+    "Deucarian.Theming",
+    "Deucarian.XRUI",
+    "Deucarian.XRUI.ThemingIntegration"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS"
+  ],
+  "versionDefines": [],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "noEngineReferences": false
+}
