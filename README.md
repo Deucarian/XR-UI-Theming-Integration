@@ -6,7 +6,7 @@ Deucarian XR UI Theming Integration is an optional package for projects that use
 
 Package ID: `com.deucarian.xr-ui.theming-integration`
 
-Current package version: `0.1.0`.
+Current package version: `0.1.1`.
 
 ## When to use it
 

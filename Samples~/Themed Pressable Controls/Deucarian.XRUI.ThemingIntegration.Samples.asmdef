@@ -1,0 +1,6 @@
+{
+  "name": "Deucarian.XRUI.ThemingIntegration.Samples",
+  "rootNamespace": "Deucarian.XRUI.ThemingIntegration.Samples",
+  "references": ["Deucarian.Theming", "Deucarian.XRUI", "Deucarian.XRUI.ThemingIntegration"],
+  "autoReferenced": false
+}

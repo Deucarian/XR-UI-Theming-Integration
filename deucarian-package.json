@@ -1,12 +1,15 @@
 {
   "packageId": "com.deucarian.xr-ui.theming-integration",
   "displayName": "Deucarian XR UI Theming Integration",
+  "samplePolicy": "playable-scene",
   "ownedCapabilities": [],
   "runtimeAssemblies": [
     "Deucarian.XRUI.ThemingIntegration"
   ],
   "editorAssemblies": [],
-  "sampleAssemblies": [],
+  "sampleAssemblies": [
+    "Deucarian.XRUI.ThemingIntegration.Samples"
+  ],
   "testAssemblies": [
     "Deucarian.XRUI.ThemingIntegration.Tests.EditMode"
   ],
