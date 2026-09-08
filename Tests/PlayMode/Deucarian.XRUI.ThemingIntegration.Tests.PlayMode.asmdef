@@ -1,0 +1,21 @@
+{
+  "name": "Deucarian.XRUI.ThemingIntegration.Tests.PlayMode",
+  "rootNamespace": "Deucarian.XRUI.ThemingIntegration.PlayModeTests",
+  "references": [
+    "Deucarian.Theming",
+    "Deucarian.XRUI",
+    "Deucarian.XRUI.ThemingIntegration"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "noEngineReferences": false
+}

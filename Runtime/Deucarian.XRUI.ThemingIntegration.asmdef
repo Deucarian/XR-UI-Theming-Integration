@@ -2,6 +2,7 @@
   "name": "Deucarian.XRUI.ThemingIntegration",
   "rootNamespace": "Deucarian.XRUI.ThemingIntegration",
   "references": [
+    "Deucarian.Common",
     "Deucarian.Theming",
     "Deucarian.XRUI"
   ],
