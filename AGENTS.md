@@ -96,3 +96,4 @@ Also run existing repository tests when changing code or asmdefs. Documentation-
 - Direct Unity Debug calls are forbidden in production code.
 - This integration currently does not own production Unity object cleanup.
 - Test fixture teardown may use `DestroyImmediate` directly.
+- `com.deucarian.common`: safe cleanup of bridge-owned transient runtime palettes.

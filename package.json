@@ -1,6 +1,6 @@
 {
   "name": "com.deucarian.xr-ui.theming-integration",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "displayName": "Deucarian XR UI Theming Integration",
   "description": "Optional integration that maps Deucarian Theming color roles into Deucarian XR UI palettes.",
   "unity": "2022.3",
@@ -20,8 +20,9 @@
     "integration"
   ],
   "dependencies": {
-    "com.deucarian.theming": "1.0.3",
-    "com.deucarian.xr-ui": "0.1.1"
+    "com.deucarian.common": "0.2.1",
+    "com.deucarian.theming": "1.3.0",
+    "com.deucarian.xr-ui": "0.2.0"
   },
   "samples": [
     {
