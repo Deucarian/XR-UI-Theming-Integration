@@ -6,7 +6,7 @@ Deucarian XR UI Theming Integration is an optional package for projects that use
 
 Package ID: `com.deucarian.xr-ui.theming-integration`
 
-Current package version: `0.2.0`.
+Current package version: `0.3.0` (Theming `1.7.0`, XR UI `0.3.0`).
 
 ## When to use it
 
@@ -43,8 +43,12 @@ Requires Unity `2022.3` or newer.
 1. Install `com.deucarian.xr-ui`.
 2. Install `com.deucarian.theming`.
 3. Install this integration package.
-4. Add `XrUiThemePaletteIntegration` near a `DeucarianThemeProvider`.
-5. Leave `Apply As Runtime Palette` enabled to publish the resolved colors through XR UI's runtime palette API.
+4. Add `XrUiThemePaletteIntegration` beneath a `DeucarianThemeProvider`, and explicitly assign an `XrUiPaletteScope` at the UI root.
+5. Leave `Apply As Runtime Palette` enabled. Enable Visual styling in Theming Project setup and choose the project family (including built-in Simultria DS or RP presets).
+
+The bridge uses a transient output and does not rewrite its target palette.
+[Palette ownership and compatibility](Documentation~/PALETTE_OWNERSHIP.md) explains
+scopes, feature switches and legacy fallback behavior.
 
 ## Samples
 
@@ -76,7 +80,7 @@ Does not own:
 
 - If colors do not update, confirm a `DeucarianThemeProvider` is active above or near the integration component.
 - If some colors stay neutral, check whether the active theme defines the built-in role IDs used by the integration.
-- If controls use the old palette after disabling the component, confirm `Apply As Runtime Palette` was enabled so the integration can clear the runtime palette on disable.
+- Disabling the component or Visual styling intentionally reveals the previous scope registration or authored fallback. One bridge never clears another bridge's colors.
 
 ## Validation
 

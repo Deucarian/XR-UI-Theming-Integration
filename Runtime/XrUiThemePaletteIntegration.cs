@@ -14,6 +14,7 @@ namespace Deucarian.XRUI.ThemingIntegration
         [SerializeField] private bool useInteractionStateMultipliers = true;
 
         private XrUiColorPalette _runtimePalette;
+        private XrUiColorPalette _defaultPalette;
         private System.IDisposable _paletteRegistration;
         private XrUiColorPalette _registeredPalette;
         private XrUiPaletteContext _paletteContext;
@@ -26,17 +27,12 @@ namespace Deucarian.XRUI.ThemingIntegration
             XrUiColorPalette palette = _registeredPalette;
             ReleaseRegistration();
             _paletteContext = context;
-            if (isActiveAndEnabled && applyAsRuntimePalette && palette != null) RegisterPalette(palette);
+            if (isActiveAndEnabled && applyAsRuntimePalette && palette != null && DeucarianThemeRuntimeResolver.UseVisualStyling) RegisterPalette(palette);
         }
         private XrUiColorPalette ResolvedPalette
         {
             get
             {
-                if (targetPalette != null)
-                {
-                    return targetPalette;
-                }
-
                 if (_runtimePalette == null)
                 {
                     _runtimePalette = ScriptableObject.CreateInstance<XrUiColorPalette>();
@@ -44,6 +40,20 @@ namespace Deucarian.XRUI.ThemingIntegration
                 }
 
                 return _runtimePalette;
+            }
+        }
+
+        private XrUiColorPalette SourcePalette
+        {
+            get
+            {
+                if (targetPalette != null) return targetPalette;
+                if (_defaultPalette == null)
+                {
+                    _defaultPalette = ScriptableObject.CreateInstance<XrUiColorPalette>();
+                    _defaultPalette.hideFlags = HideFlags.HideAndDontSave;
+                }
+                return _defaultPalette;
             }
         }
 
@@ -55,27 +65,7 @@ namespace Deucarian.XRUI.ThemingIntegration
             }
 
             XrUiColorPalette palette = ResolvedPalette;
-            palette.UseInteractionStateMultipliers = useInteractionStateMultipliers;
-
-            Apply(theme, DeucarianBuiltinColorRoleIds.Core.Primary, palette.Primary, value => palette.Primary = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.Core.Secondary, palette.Secondary, value => palette.Secondary = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.Status.Success, palette.Success, value => palette.Success = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.Status.Error, palette.Danger, value => palette.Danger = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.Status.Warning, palette.Warning, value => palette.Warning = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.Status.Info, palette.Info, value => palette.Info = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.UI.Normal, palette.Background, value => palette.Background = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.UI.Disabled, palette.Disabled, value => palette.Disabled = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.UI.Highlighted, palette.Secondary, value => palette.Secondary = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.UI.Pressed, palette.Primary, value => palette.Primary = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.Text.Primary, palette.BodyText, value => palette.BodyText = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.Text.Secondary, palette.SmallText, value => palette.SmallText = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.Text.Muted, palette.MutedText, value => palette.MutedText = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.Text.Disabled, palette.PlaceholderText, value => palette.PlaceholderText = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.Core.Accent, palette.KeyboardAccent, value => palette.KeyboardAccent = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.Core.Surface, palette.ControlSubtleBackground, value => palette.ControlSubtleBackground = value);
-            Apply(theme, DeucarianBuiltinColorRoleIds.Core.SurfaceRaised, palette.KeyboardBackground, value => palette.KeyboardBackground = value);
-
-            palette.NotifyPaletteChanged();
+            XrUiThemePaletteMapping.Apply(theme, SourcePalette, palette, useInteractionStateMultipliers);
 
             if (applyAsRuntimePalette && isActiveAndEnabled) RegisterPalette(palette);
             else ReleaseRegistration();
@@ -87,6 +77,8 @@ namespace Deucarian.XRUI.ThemingIntegration
             base.OnDisable();
             UnityObjectUtility.DestroySafely(_runtimePalette);
             _runtimePalette = null;
+            UnityObjectUtility.DestroySafely(_defaultPalette);
+            _defaultPalette = null;
         }
 
         protected override void OnDestroy()
@@ -94,6 +86,8 @@ namespace Deucarian.XRUI.ThemingIntegration
             ReleaseRegistration();
             UnityObjectUtility.DestroySafely(_runtimePalette);
             _runtimePalette = null;
+            UnityObjectUtility.DestroySafely(_defaultPalette);
+            _defaultPalette = null;
             base.OnDestroy();
         }
 
@@ -117,15 +111,6 @@ namespace Deucarian.XRUI.ThemingIntegration
             _registeredContext = null;
         }
 
-        private static void Apply(DeucarianTheme theme, string roleId, Color fallback, System.Action<Color> assign)
-        {
-            if (theme != null && theme.TryGetColorById(roleId, out Color color))
-            {
-                assign(color);
-                return;
-            }
-
-            assign(fallback);
-        }
+        protected override void OnVisualStylingDisabled() => ReleaseRegistration();
     }
 }
