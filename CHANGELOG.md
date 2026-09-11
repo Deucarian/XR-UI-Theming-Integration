@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased]
+
+- Provide a playable light/dark scene using the bundled Deucarian family, explicit local palette scope and real XR controls.
+
 ## 0.3.0 - 2026-09-11
 
 - Treat authored target palettes as read-only fallbacks and map all control roles into a bridge-owned transient output.
