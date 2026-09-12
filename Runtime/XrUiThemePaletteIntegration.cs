@@ -75,20 +75,22 @@ namespace Deucarian.XRUI.ThemingIntegration
         {
             ReleaseRegistration();
             base.OnDisable();
-            UnityObjectUtility.DestroySafely(_runtimePalette);
-            _runtimePalette = null;
-            UnityObjectUtility.DestroySafely(_defaultPalette);
-            _defaultPalette = null;
+            ReleaseOwnedPalettes();
         }
 
         protected override void OnDestroy()
         {
             ReleaseRegistration();
+            ReleaseOwnedPalettes();
+            base.OnDestroy();
+        }
+
+        private void ReleaseOwnedPalettes()
+        {
             UnityObjectUtility.DestroySafely(_runtimePalette);
             _runtimePalette = null;
             UnityObjectUtility.DestroySafely(_defaultPalette);
             _defaultPalette = null;
-            base.OnDestroy();
         }
 
         private void RegisterPalette(XrUiColorPalette palette)

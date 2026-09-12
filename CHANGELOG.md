@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.3.1] - 2026-09-12
+
+- Reuse idempotent transient palette cleanup and align dependencies with shared control color ownership.
+
 ## [Unreleased]
 
 - Provide a playable light/dark scene using the bundled Deucarian family, explicit local palette scope and real XR controls.
